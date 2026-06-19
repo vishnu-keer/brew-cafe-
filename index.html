@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brewing Bliss Cafe — Best Coffee Shop in Pratap Nagar, Jaipur</title>
+<meta name="description" content="Brewing Bliss Cafe in Pratap Nagar, Jaipur — specialty coffee, fresh bakery, cozy ambience. Brewed for bliss, served with love. Book your table today.">
+<meta property="og:title" content="Brewing Bliss Cafe — Jaipur's Most Loved Coffee Destination">
+<meta property="og:description" content="Freshly brewed coffee, handcrafted beverages and unforgettable moments in Pratap Nagar, Jaipur.">
+<meta property="og:type" content="restaurant">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "Brewing Bliss Cafe",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "68/106 RHB, Haldighati Marg, Near Chai Sutta Bar, Pratap Nagar",
+    "addressLocality": "Jaipur",
+    "addressRegion": "Rajasthan",
+    "addressCountry": "IN"
+  },
+  "telephone": "+919509943364",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.7",
+    "reviewCount": "145"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --espresso:#2C1810;
+    --bark:#5C3D2E;
+    --latte:#D0B49F;
+    --cream:#EDE0D4;
+    --milk:#FFF8F0;
+    --gold:#C9974C;
+    --steam:rgba(255,248,240,0.55);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--milk);
+    color:var(--espresso);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.font-display{font-family:'Fraunces', serif;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+
+  ::selection{background:var(--gold); color:var(--milk);}
+
+  /* scrollbar */
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:var(--cream);}
+  ::-webkit-scrollbar-thumb{background:var(--bark); border-radius:8px;}
+
+  /* progress bar */
+  #scroll-progress{
+    position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,var(--gold),var(--bark));
+    z-index:9999; width:0%; transition:width .1s linear;
+  }
+
+  /* cursor glow */
+  #cursor-glow{
+    position:fixed; width:280px; height:280px; border-radius:50%;
+    background:radial-gradient(circle, rgba(201,151,76,0.16), transparent 70%);
+    pointer-events:none; z-index:5; transform:translate(-50%,-50%);
+    transition:opacity .3s; opacity:0;
+  }
+
+  /* nav */
+  #navbar{
+    position:fixed; top:0; left:0; width:100%; z-index:100;
+    transition:all .4s ease;
+    padding:22px 6%;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  #navbar.scrolled{
+    background:rgba(255,248,240,0.85);
+    backdrop-filter:blur(14px);
+    box-shadow:0 8px 30px rgba(44,24,16,0.08);
+    padding:14px 6%;
+  }
+  .logo-mark{
+    width:42px;height:42px;border-radius:50%;
+    background:linear-gradient(135deg,var(--bark),var(--espresso));
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold); font-family:'Fraunces',serif; font-weight:700; font-size:18px;
+    box-shadow:0 4px 14px rgba(44,24,16,.3);
+  }
+  .nav-links a{
+    position:relative; color:var(--espresso); font-weight:500; font-size:14.5px;
+    letter-spacing:.02em; text-decoration:none; padding:6px 0; margin:0 16px;
+  }
+  .nav-links a::after{
+    content:''; position:absolute; bottom:0; left:0; width:0%; height:2px; background:var(--gold);
+    transition:width .3s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+
+  .btn-primary{
+    background:var(--espresso); color:var(--milk); border:1px solid var(--espresso);
+    padding:13px 28px; border-radius:999px; font-weight:600; font-size:14px;
+    transition:all .35s cubic-bezier(.2,.8,.2,1); cursor:pointer; display:inline-flex; align-items:center; gap:8px;
+    position:relative; overflow:hidden;
+  }
+  .btn-primary:hover{background:var(--gold); border-color:var(--gold); transform:translateY(-3px); box-shadow:0 14px 26px rgba(201,151,76,.35);}
+  .btn-outline{
+    background:transparent; color:var(--espresso); border:1.5px solid var(--espresso);
+    padding:13px 28px; border-radius:999px; font-weight:600; font-size:14px;
+    transition:all .35s cubic-bezier(.2,.8,.2,1); cursor:pointer; display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-outline:hover{background:var(--espresso); color:var(--milk); transform:translateY(-3px);}
+
+  .magnetic{transition:transform .25s ease;}
+
+  /* HERO */
+  #hero{
+    position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden;
+    background:radial-gradient(ellipse at top right, #4a2f20 0%, var(--espresso) 55%, #1a0f0a 100%);
+  }
+  #hero::before{
+    content:''; position:absolute; inset:0;
+    background-image:radial-gradient(circle at 20% 30%, rgba(201,151,76,.12), transparent 40%),
+                      radial-gradient(circle at 80% 70%, rgba(208,180,159,.10), transparent 45%);
+  }
+  .bean{
+    position:absolute; width:14px; height:22px; border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+    background:linear-gradient(135deg,#5C3D2E,#2C1810);
+    opacity:.55; pointer-events:none;
+  }
+  .bean::after{
+    content:''; position:absolute; top:50%; left:50%; width:1.5px; height:80%;
+    background:rgba(237,224,212,.4); transform:translate(-50%,-50%) rotate(10deg);
+  }
+  .grain{position:absolute; inset:0; pointer-events:none; opacity:.04; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  .eyebrow{
+    text-transform:uppercase; letter-spacing:.22em; font-size:12px; font-weight:600;
+    color:var(--gold); display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:28px; height:1px; background:var(--gold);}
+
+  .reveal{opacity:0; transform:translateY(36px); transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .reveal-stagger > *{transition-delay:calc(var(--i) * 90ms);}
+
+  .stat-card{
+    background:rgba(255,248,240,0.05); border:1px solid rgba(237,224,212,.14);
+    border-radius:18px; padding:20px 18px; backdrop-filter:blur(6px);
+  }
+  .stat-num{font-family:'Fraunces',serif; font-size:clamp(28px,4vw,38px); color:var(--milk); font-weight:600;}
+
+  /* steaming cup */
+  .cup-wrap{position:relative; width:340px; height:340px; margin:0 auto;}
+  .cup-glow{
+    position:absolute; inset:-40px; border-radius:50%;
+    background:radial-gradient(circle, rgba(201,151,76,.35), transparent 65%);
+    filter:blur(8px); transition:opacity .5s; opacity:.4;
+  }
+  .cup-wrap:hover .cup-glow{opacity:1;}
+  .cup-svg{position:relative; transition:transform .6s cubic-bezier(.2,.8,.2,1); transform-style:preserve-3d;}
+  .cup-wrap:hover .cup-svg{transform:rotateY(18deg) rotateX(4deg) scale(1.04);}
+  .steam{
+    position:absolute; bottom:60%; border-radius:50%;
+    background:var(--steam); filter:blur(6px);
+    animation:rise 4s ease-in infinite;
+    opacity:0;
+  }
+  @keyframes rise{
+    0%{opacity:0; transform:translateY(0) scale(.4) translateX(0);}
+    15%{opacity:.7;}
+    100%{opacity:0; transform:translateY(-150px) scale(1.6) translateX(14px);}
+  }
+  .particle{position:absolute; width:4px; height:4px; border-radius:50%; background:var(--gold); opacity:.6; animation:float 6s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-22px);}}
+
+  /* sections */
+  section{padding:110px 6%; position:relative;}
+  .section-head{max-width:680px; margin-bottom:60px;}
+  .section-title{font-size:clamp(32px,4.4vw,52px); font-weight:600; line-height:1.08; margin-top:10px;}
+
+  /* about */
+  #about{background:var(--cream);}
+  .timeline-item{border-left:2px solid var(--latte); padding:0 0 36px 28px; position:relative;}
+  .timeline-item::before{content:''; position:absolute; left:-7px; top:2px; width:12px; height:12px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 4px var(--cream);}
+
+  /* glass card */
+  .glass{
+    background:rgba(255,255,255,0.45); border:1px solid rgba(255,255,255,.5);
+    backdrop-filter:blur(14px); border-radius:22px;
+  }
+  .feature-card{
+    padding:34px 26px; transition:all .4s cubic-bezier(.2,.8,.2,1); cursor:default;
+  }
+  .feature-card:hover{transform:translateY(-10px); box-shadow:0 24px 50px rgba(44,24,16,.14); background:rgba(255,255,255,.7);}
+  .feature-icon{
+    width:56px; height:56px; border-radius:16px; background:var(--espresso); color:var(--gold);
+    display:flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:18px;
+  }
+
+  /* menu */
+  #menu{background:var(--milk);}
+  .menu-tab{
+    padding:10px 20px; border-radius:999px; font-size:13.5px; font-weight:600; cursor:pointer;
+    border:1.5px solid var(--latte); color:var(--bark); transition:all .3s; white-space:nowrap;
+  }
+  .menu-tab.active, .menu-tab:hover{background:var(--espresso); color:var(--milk); border-color:var(--espresso);}
+  .menu-card{
+    background:var(--milk); border:1px solid rgba(92,61,46,.12); border-radius:20px; padding:22px;
+    transition:all .35s cubic-bezier(.2,.8,.2,1); position:relative; overflow:hidden;
+  }
+  .menu-card:hover{transform:translateY(-6px); box-shadow:0 22px 44px rgba(44,24,16,.12); border-color:var(--gold);}
+  .menu-img{width:100%; height:170px; border-radius:14px; object-fit:cover; margin-bottom:16px;}
+  .price-tag{font-family:'Fraunces',serif; font-weight:600; font-size:20px; color:var(--gold);}
+  .add-cart{
+    width:38px;height:38px;border-radius:50%; background:var(--espresso); color:var(--milk);
+    display:flex; align-items:center; justify-content:center; transition:all .3s; border:none; cursor:pointer;
+  }
+  .add-cart:hover{background:var(--gold); transform:rotate(90deg);}
+
+  /* offers */
+  #offers{background:var(--espresso); color:var(--milk);}
+  .offer-card{
+    border:1px solid rgba(237,224,212,.18); border-radius:20px; padding:30px;
+    background:linear-gradient(150deg, rgba(237,224,212,.05), rgba(237,224,212,0));
+    position:relative; overflow:hidden;
+  }
+  .offer-card::after{content:''; position:absolute; inset:0; background:linear-gradient(120deg,transparent,rgba(201,151,76,.08),transparent); transform:translateX(-100%); transition:transform .8s;}
+  .offer-card:hover::after{transform:translateX(100%);}
+  .countdown{display:flex; gap:10px; margin-top:18px;}
+  .count-box{background:rgba(255,248,240,.08); border-radius:10px; padding:8px 12px; text-align:center; min-width:54px;}
+  .count-box .num{font-family:'Fraunces',serif; font-size:20px; font-weight:700; color:var(--gold);}
+  .count-box .lbl{font-size:9px; letter-spacing:.1em; text-transform:uppercase; opacity:.7;}
+
+  /* reviews */
+  #reviews{background:var(--cream); overflow:hidden;}
+  .review-track{display:flex; gap:22px; width:max-content; animation:scroll-left 42s linear infinite;}
+  .review-track:hover{animation-play-state:paused;}
+  @keyframes scroll-left{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+  .review-card{
+    width:340px; flex-shrink:0; background:var(--milk); border-radius:20px; padding:26px;
+    border:1px solid rgba(92,61,46,.1); box-shadow:0 10px 30px rgba(44,24,16,.05);
+  }
+  .avatar{width:44px;height:44px;border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--milk); font-family:'Fraunces',serif;}
+
+  /* gallery */
+  #gallery{background:var(--milk);}
+  .masonry{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; grid-auto-rows:10px;}
+  .masonry-item{border-radius:16px; overflow:hidden; cursor:pointer; position:relative;}
+  .masonry-item img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
+  .masonry-item:hover img{transform:scale(1.12);}
+  .masonry-item::after{content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(44,24,16,.45), transparent 50%); opacity:0; transition:opacity .4s;}
+  .masonry-item:hover::after{opacity:1;}
+
+  /* quiz */
+  #quiz{background:var(--bark); color:var(--milk);}
+  .quiz-option{
+    border:1.5px solid rgba(237,224,212,.3); border-radius:14px; padding:16px 18px; cursor:pointer;
+    transition:all .3s; text-align:left;
+  }
+  .quiz-option:hover, .quiz-option.selected{background:var(--gold); border-color:var(--gold); color:var(--espresso);}
+
+  /* reservation */
+  #reserve{background:var(--cream);}
+  .field{
+    width:100%; padding:14px 16px; border-radius:12px; border:1.5px solid rgba(92,61,46,.2);
+    background:var(--milk); font-family:inherit; font-size:14.5px; outline:none; transition:border .3s, box-shadow .3s;
+  }
+  .field:focus{border-color:var(--gold); box-shadow:0 0 0 4px rgba(201,151,76,.15);}
+  .field.error{border-color:#c0392b;}
+
+  /* location/contact */
+  #location{background:var(--milk);}
+  .contact-card{
+    border:1px solid rgba(92,61,46,.14); border-radius:18px; padding:24px; transition:all .35s;
+  }
+  .contact-card:hover{transform:translateY(-6px); box-shadow:0 18px 36px rgba(44,24,16,.1); border-color:var(--gold);}
+
+  footer{background:var(--espresso); color:var(--cream);}
+  footer a{color:var(--cream); opacity:.75; text-decoration:none; transition:opacity .3s, color .3s;}
+  footer a:hover{opacity:1; color:var(--gold);}
+
+  .social-dot{
+    width:40px; height:40px; border-radius:50%; border:1px solid rgba(237,224,212,.3);
+    display:flex; align-items:center; justify-content:center; transition:all .3s;
+  }
+  .social-dot:hover{background:var(--gold); border-color:var(--gold); transform:translateY(-3px);}
+
+  @media (max-width: 768px){
+    .nav-links{display:none;}
+    .masonry{grid-template-columns:repeat(2,1fr);}
+    section{padding:80px 6%;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+<div id="cursor-glow"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#hero" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--espresso)">
+    <div class="logo-mark">B</div>
+    <div>
+      <div style="font-family:'Fraunces',serif;font-weight:700;font-size:17px;line-height:1">Brewing Bliss</div>
+      <div style="font-size:10px;letter-spacing:.18em;color:var(--bark);text-transform:uppercase">Cafe</div>
+    </div>
+  </a>
+  <div class="nav-links" style="display:flex">
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#offers">Offers</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Visit</a>
+  </div>
+  <a href="#reserve" class="btn-primary magnetic" style="padding:10px 22px;font-size:13px">Reserve Table</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="grain"></div>
+  <div id="beans-container"></div>
+  <div style="position:relative; z-index:2; width:100%; max-width:1280px; margin:0 auto; padding-top:90px;
+              display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center;">
+    <div>
+      <div class="eyebrow reveal">Pratap Nagar · Jaipur</div>
+      <h1 style="color:var(--milk); font-size:clamp(38px,6vw,68px); font-weight:600; line-height:1.04; margin-top:18px;" class="reveal">
+        Experience Jaipur's<br>Most Loved <span style="color:var(--gold); font-style:italic; font-weight:500">Coffee</span> Destination
+      </h1>
+      <p style="color:var(--cream); opacity:.75; font-size:17px; max-width:480px; margin-top:22px; line-height:1.6" class="reveal">
+        Freshly brewed coffee, handcrafted beverages, delicious food, and unforgettable moments — brewed for bliss, served with love.
+      </p>
+      <div style="display:flex; gap:16px; margin-top:34px; flex-wrap:wrap" class="reveal">
+        <a href="#menu" class="btn-primary magnetic" style="background:var(--gold);border-color:var(--gold);color:var(--espresso)">Explore Menu →</a>
+        <a href="#reserve" class="btn-outline magnetic" style="color:var(--milk); border-color:rgba(237,224,212,.4)">Reserve Table</a>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:56px; max-width:560px" class="reveal">
+        <div class="stat-card"><div class="stat-num" data-count="145">0</div><div style="color:var(--cream);opacity:.6;font-size:12px">Reviews</div></div>
+        <div class="stat-card"><div class="stat-num" data-count="4.7" data-decimal="1">0</div><div style="color:var(--cream);opacity:.6;font-size:12px">Rating</div></div>
+        <div class="stat-card"><div class="stat-num" data-count="1000">0</div><div style="color:var(--cream);opacity:.6;font-size:12px">Happy Customers</div></div>
+        <div class="stat-card"><div class="stat-num" data-count="50">0</div><div style="color:var(--cream);opacity:.6;font-size:12px">Menu Items</div></div>
+      </div>
+    </div>
+
+    <!-- 3D-ish steaming cup -->
+    <div class="cup-wrap reveal">
+      <div class="cup-glow"></div>
+      <div class="steam" style="width:30px;height:90px;left:46%;animation-delay:0s"></div>
+      <div class="steam" style="width:22px;height:70px;left:55%;animation-delay:1.3s"></div>
+      <div class="steam" style="width:18px;height:60px;left:38%;animation-delay:2.4s"></div>
+      <svg class="cup-svg" width="320" height="320" viewBox="0 0 320 320">
+        <ellipse cx="160" cy="250" rx="100" ry="16" fill="#000" opacity="0.25"/>
+        <path d="M70 110 H230 L218 230 Q214 250 190 250 H110 Q86 250 82 230 Z" fill="#FFF8F0"/>
+        <path d="M70 110 H230 L226 140 H74 Z" fill="#2C1810"/>
+        <ellipse cx="150" cy="120" rx="78" ry="14" fill="#5C3D2E"/>
+        <path d="M230 140 Q270 140 270 170 Q270 200 230 200" fill="none" stroke="#FFF8F0" stroke-width="10" stroke-linecap="round"/>
+        <circle class="particle" style="left:60px; top:60px;" cx="0" cy="0" r="3"/>
+        <circle class="particle" style="left:250px; top:90px; animation-delay:1s" cx="0" cy="0" r="3"/>
+        <circle class="particle" style="left:100px; top:40px; animation-delay:2s" cx="0" cy="0" r="3"/>
+      </svg>
+      <p style="text-align:center; color:var(--cream); opacity:.5; font-size:12px; margin-top:6px; letter-spacing:.05em">hover the cup ☕</p>
+    </div>
+  </div>
+
+  <a href="#about" style="position:absolute; bottom:28px; left:50%; transform:translateX(-50%); color:var(--cream); opacity:.5; font-size:11px; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; z-index:2">
+    Scroll ↓
+  </a>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:start;">
+    <div class="reveal">
+      <div class="eyebrow">Our Story</div>
+      <h2 class="section-title">Every cup tells<br>a story of <em style="font-style:italic;color:var(--bark)">Jaipur.</em></h2>
+      <p style="margin-top:24px; font-size:16.5px; line-height:1.75; color:var(--bark); max-width:480px;">
+        At Brewing Bliss, every cup tells a story. Located in the heart of Pratap Nagar, Jaipur, we bring together premium coffee beans, expert brewing techniques, and a cozy atmosphere designed for coffee lovers who want more than just a drink — they want a moment.
+      </p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:32px; max-width:480px">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&q=80" class="menu-img" style="height:140px" alt="latte art">
+        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500&q=80" class="menu-img" style="height:140px" alt="cafe interior">
+      </div>
+    </div>
+    <div class="reveal" style="padding-top:20px">
+      <div class="timeline-item">
+        <div style="font-size:12px; color:var(--gold); font-weight:700; letter-spacing:.1em">THE SPARK</div>
+        <h3 style="font-size:20px; margin-top:6px">A founder's love for the perfect roast</h3>
+        <p style="margin-top:8px; color:var(--bark); font-size:14.5px; line-height:1.6">It began with a simple frustration — Jaipur deserved coffee as good as its culture. So we built a café that treats every bean with respect.</p>
+      </div>
+      <div class="timeline-item">
+        <div style="font-size:12px; color:var(--gold); font-weight:700; letter-spacing:.1em">THE SPACE</div>
+        <h3 style="font-size:20px; margin-top:6px">Designed for slow mornings & long chats</h3>
+        <p style="margin-top:8px; color:var(--bark); font-size:14.5px; line-height:1.6">Warm woods, soft music, and natural light — Pratap Nagar's favourite corner to read, work, or simply breathe.</p>
+      </div>
+      <div class="timeline-item" style="border-left:none; padding-bottom:0">
+        <div style="font-size:12px; color:var(--gold); font-weight:700; letter-spacing:.1em">TODAY</div>
+        <h3 style="font-size:20px; margin-top:6px">1000+ happy customers and counting</h3>
+        <p style="margin-top:8px; color:var(--bark); font-size:14.5px; line-height:1.6">From first dates to study sessions — we've become part of Jaipur's everyday bliss.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="background:var(--milk)">
+  <div style="max-width:1280px; margin:0 auto;">
+    <div class="section-head reveal">
+      <div class="eyebrow">Why Brewing Bliss</div>
+      <h2 class="section-title">Crafted for your<br>perfect break.</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px;">
+      <div class="glass feature-card reveal"><div class="feature-icon">☕</div><h3 style="font-size:18px;font-weight:600">Specialty Coffee</h3><p style="margin-top:8px;color:var(--bark);font-size:14px">Single-origin beans, brewed with precision by trained baristas.</p></div>
+      <div class="glass feature-card reveal"><div class="feature-icon">🥐</div><h3 style="font-size:18px;font-weight:600">Fresh Bakery</h3><p style="margin-top:8px;color:var(--bark);font-size:14px">Baked daily — croissants, cookies and cakes made in-house.</p></div>
+      <div class="glass feature-card reveal"><div class="feature-icon">🍔</div><h3 style="font-size:18px;font-weight:600">Delicious Food</h3><p style="margin-top:8px;color:var(--bark);font-size:14px">Wraps, paninis and burgers crafted to pair with every brew.</p></div>
+      <div class="glass feature-card reveal"><div class="feature-icon">🎵</div><h3 style="font-size:18px;font-weight:600">Cozy Ambience</h3><p style="margin-top:8px;color:var(--bark);font-size:14px">Warm lighting and curated playlists for every mood.</p></div>
+      <div class="glass feature-card reveal"><div class="feature-icon">📶</div><h3 style="font-size:18px;font-weight:600">Free WiFi</h3><p style="margin-top:8px;color:var(--bark);font-size:14px">Fast, reliable internet — perfect for work or study sessions.</p></div>
+      <div class="glass feature-card reveal"><div class="feature-icon">📸</div><h3 style="font-size:18px;font-weight:600">Instagram Worthy</h3><p style="margin-top:8px;color:var(--bark);font-size:14px">Every corner styled for the photo you'll actually post.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div style="max-width:1280px; margin:0 auto;">
+    <div class="section-head reveal">
+      <div class="eyebrow">Our Menu</div>
+      <h2 class="section-title">Made fresh.<br>Served with love.</h2>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:30px;">
+      <div style="display:flex; gap:10px; overflow-x:auto; padding-bottom:6px" id="menu-tabs">
+        <div class="menu-tab active" data-cat="all">All</div>
+        <div class="menu-tab" data-cat="coffee">Coffee</div>
+        <div class="menu-tab" data-cat="shakes">Shakes</div>
+        <div class="menu-tab" data-cat="smoothies">Smoothies & Tea</div>
+        <div class="menu-tab" data-cat="wraps">Wraps & Panini</div>
+        <div class="menu-tab" data-cat="desserts">Desserts</div>
+      </div>
+      <input id="menu-search" class="field" style="max-width:240px" placeholder="Search menu...">
+    </div>
+
+    <div id="menu-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;"></div>
+  </div>
+</section>
+
+<!-- OFFERS -->
+<section id="offers">
+  <div style="max-width:1280px; margin:0 auto;">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--gold)">Special Offers</div>
+      <h2 class="section-title" style="color:var(--milk)">Bliss, at a<br>better price.</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
+      <div class="offer-card reveal"><div style="font-size:30px">☕☕</div><h3 style="margin-top:14px;font-size:18px">Buy 1 Get 1 Coffee</h3><p style="opacity:.65;font-size:13px;margin-top:6px">On all hot coffees, every Monday.</p></div>
+      <div class="offer-card reveal"><div style="font-size:30px">🎓</div><h3 style="margin-top:14px;font-size:18px">Student Discount</h3><p style="opacity:.65;font-size:13px;margin-top:6px">Flat 15% off with a valid student ID.</p></div>
+      <div class="offer-card reveal"><div style="font-size:30px">🌅</div><h3 style="margin-top:14px;font-size:18px">Weekend Special</h3><p style="opacity:.65;font-size:13px;margin-top:6px">Free pastry with any large beverage.</p></div>
+      <div class="offer-card reveal">
+        <div style="font-size:30px">⏰</div><h3 style="margin-top:14px;font-size:18px">Happy Hours</h3><p style="opacity:.65;font-size:13px;margin-top:6px">4–6 PM daily — 20% off everything.</p>
+        <div class="countdown" id="countdown">
+          <div class="count-box"><div class="num" id="cd-h">00</div><div class="lbl">Hrs</div></div>
+          <div class="count-box"><div class="num" id="cd-m">00</div><div class="lbl">Min</div></div>
+          <div class="count-box"><div class="num" id="cd-s">00</div><div class="lbl">Sec</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div style="max-width:1280px; margin:0 auto 40px;">
+    <div class="section-head reveal" style="margin-bottom:30px">
+      <div class="eyebrow">Customer Love</div>
+      <h2 class="section-title">4.7★ from 145+<br>happy regulars.</h2>
+    </div>
+  </div>
+  <div class="review-track" id="review-track"></div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div style="max-width:1280px; margin:0 auto;">
+    <div class="section-head reveal">
+      <div class="eyebrow">Gallery</div>
+      <h2 class="section-title">Moments brewed<br>at Brewing Bliss.</h2>
+    </div>
+    <div class="masonry" id="masonry"></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div style="max-width:760px; margin:0 auto; text-align:center;">
+    <div class="eyebrow" style="justify-content:center">AI Coffee Quiz</div>
+    <h2 class="section-title" style="margin-top:14px">Not sure what to order?<br>Let's find your brew.</h2>
+    <div id="quiz-box" style="margin-top:40px; text-align:left;">
+      <div id="quiz-question"></div>
+      <div id="quiz-options" style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:22px;"></div>
+      <div id="quiz-result" style="display:none; text-align:center; margin-top:10px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="reserve">
+  <div style="max-width:900px; margin:0 auto;">
+    <div class="section-head reveal" style="margin:0 auto 40px; text-align:center">
+      <div class="eyebrow" style="justify-content:center">Book a Table</div>
+      <h2 class="section-title">Save your spot<br>for bliss.</h2>
+    </div>
+    <form id="reserve-form" class="glass reveal" style="padding:40px; display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+      <input class="field" name="name" placeholder="Full Name" required>
+      <input class="field" name="phone" placeholder="Phone Number" required>
+      <input class="field" name="email" type="email" placeholder="Email Address" required style="grid-column:span 2">
+      <input class="field" name="date" type="date" required>
+      <input class="field" name="time" type="time" required>
+      <select class="field" name="guests" style="grid-column:span 2" required>
+        <option value="">Number of Guests</option>
+        <option>1–2 Guests</option><option>3–4 Guests</option><option>5+ Guests</option>
+      </select>
+      <button type="submit" class="btn-primary magnetic" style="grid-column:span 2; justify-content:center">Confirm Reservation</button>
+    </form>
+  </div>
+</section>
+
+<!-- modal -->
+<div id="modal-overlay" style="position:fixed; inset:0; background:rgba(44,24,16,.6); backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center; z-index:200;">
+  <div style="background:var(--milk); border-radius:24px; padding:46px; text-align:center; max-width:380px;">
+    <div style="font-size:46px">✅</div>
+    <h3 style="margin-top:14px; font-size:22px">Table Reserved!</h3>
+    <p style="margin-top:8px; color:var(--bark); font-size:14px">We'll send a confirmation to your phone shortly. See you soon at Brewing Bliss ☕</p>
+    <button onclick="document.getElementById('modal-overlay').style.display='none'" class="btn-primary" style="margin-top:20px">Close</button>
+  </div>
+</div>
+
+<!-- lightbox -->
+<div id="lightbox" style="position:fixed; inset:0; background:rgba(0,0,0,.85); display:none; align-items:center; justify-content:center; z-index:200;">
+  <img id="lightbox-img" style="max-width:88%; max-height:88%; border-radius:14px;">
+  <div onclick="document.getElementById('lightbox').style.display='none'" style="position:absolute; top:24px; right:32px; color:white; font-size:30px; cursor:pointer;">×</div>
+</div>
+
+<!-- LOCATION + CONTACT -->
+<section id="location">
+  <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start;">
+    <div class="reveal">
+      <div class="eyebrow">Visit Us</div>
+      <h2 class="section-title">Find your way<br>to bliss.</h2>
+      <p style="margin-top:20px; color:var(--bark); line-height:1.7">68/106 RHB, Haldighati Marg, Near Chai Sutta Bar, Pratap Nagar, Jaipur, Rajasthan</p>
+      <div style="border-radius:20px; overflow:hidden; margin-top:24px; border:1px solid rgba(92,61,46,.15)">
+        <iframe src="https://www.google.com/maps?q=Pratap+Nagar,+Jaipur,+Rajasthan&output=embed" width="100%" height="320" style="border:0;" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Get in Touch</div>
+      <h2 class="section-title">We'd love to<br>hear from you.</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px;">
+        <div class="contact-card"><div style="font-size:22px">📞</div><h4 style="margin-top:10px;font-weight:600">Call Us</h4><a href="tel:+919509943364" style="color:var(--bark); font-size:14px; text-decoration:none">+91 95099 43364</a></div>
+        <div class="contact-card"><div style="font-size:22px">💬</div><h4 style="margin-top:10px;font-weight:600">WhatsApp</h4><a href="https://wa.me/919509943364" style="color:var(--bark); font-size:14px; text-decoration:none">Chat with us</a></div>
+        <div class="contact-card"><div style="font-size:22px">📸</div><h4 style="margin-top:10px;font-weight:600">Instagram</h4><a href="#" style="color:var(--bark); font-size:14px; text-decoration:none">@brewingbliss</a></div>
+        <div class="contact-card"><div style="font-size:22px">✉️</div><h4 style="margin-top:10px;font-weight:600">Email</h4><a href="mailto:hello@brewingbliss.cafe" style="color:var(--bark); font-size:14px; text-decoration:none">hello@brewingbliss.cafe</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="padding:70px 6% 30px;">
+  <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:40px;">
+    <div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="logo-mark">B</div>
+        <div style="font-family:'Fraunces',serif; font-weight:700; font-size:18px; color:var(--milk)">Brewing Bliss</div>
+      </div>
+      <p style="margin-top:16px; opacity:.6; font-size:13.5px; max-width:260px;">Brewed for bliss, served with love — Pratap Nagar, Jaipur's favourite coffee house.</p>
+      <div style="display:flex; gap:10px; margin-top:20px;">
+        <a href="#" class="social-dot">📸</a><a href="#" class="social-dot">📘</a><a href="https://wa.me/919509943364" class="social-dot">💬</a>
+      </div>
+    </div>
+    <div>
+      <h4 style="color:var(--milk); font-size:14px; margin-bottom:14px;">Quick Links</h4>
+      <div style="display:flex; flex-direction:column; gap:10px; font-size:13.5px;"><a href="#about">About</a><a href="#menu">Menu</a><a href="#reviews">Reviews</a><a href="#reserve">Reserve</a></div>
+    </div>
+    <div>
+      <h4 style="color:var(--milk); font-size:14px; margin-bottom:14px;">Contact</h4>
+      <div style="display:flex; flex-direction:column; gap:10px; font-size:13.5px;">
+        <a href="tel:+919509943364">+91 95099 43364</a>
+        <a href="#">Pratap Nagar, Jaipur</a>
+        <a href="mailto:hello@brewingbliss.cafe">hello@brewingbliss.cafe</a>
+      </div>
+    </div>
+    <div>
+      <h4 style="color:var(--milk); font-size:14px; margin-bottom:14px;">Newsletter</h4>
+      <p style="opacity:.6; font-size:13px; margin-bottom:12px;">Get offers & updates in your inbox.</p>
+      <div style="display:flex; gap:8px;">
+        <input class="field" placeholder="Your email" style="background:rgba(255,255,255,.06); border-color:rgba(237,224,212,.2); color:var(--milk); font-size:13px;">
+        <button class="btn-primary" style="background:var(--gold); border-color:var(--gold); color:var(--espresso); padding:12px 18px;">→</button>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:1280px; margin:50px auto 0; padding-top:24px; border-top:1px solid rgba(237,224,212,.12); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12px; opacity:.5;">
+    <div>© 2026 Brewing Bliss Cafe. All rights reserved.</div>
+    <div>Pratap Nagar · Jaipur · Rajasthan</div>
+  </div>
+</footer>
+
+<script>
+// ---------- Scroll progress + navbar ----------
+const progress = document.getElementById('scroll-progress');
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  progress.style.width = pct + '%';
+  navbar.classList.toggle('scrolled', h.scrollTop > 40);
+});
+
+// ---------- Cursor glow ----------
+const glow = document.getElementById('cursor-glow');
+document.addEventListener('mousemove', e => {
+  glow.style.opacity = 1;
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+});
+document.addEventListener('mouseleave', () => glow.style.opacity = 0);
+
+// ---------- Magnetic buttons ----------
+document.querySelectorAll('.magnetic').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const r = btn.getBoundingClientRect();
+    const x = e.clientX - r.left - r.width/2;
+    const y = e.clientY - r.top - r.height/2;
+    btn.style.transform = `translate(${x*0.18}px, ${y*0.3}px)`;
+  });
+  btn.addEventListener('mouseleave', () => btn.style.transform = '');
+});
+
+// ---------- Floating beans ----------
+const beansContainer = document.getElementById('beans-container');
+for (let i=0;i<16;i++){
+  const b = document.createElement('div');
+  b.className = 'bean';
+  b.style.left = Math.random()*100+'%';
+  b.style.top = Math.random()*100+'%';
+  b.style.transform = `rotate(${Math.random()*360}deg)`;
+  b.style.animation = `float ${5+Math.random()*5}s ease-in-out infinite`;
+  b.style.animationDelay = (Math.random()*4)+'s';
+  beansContainer.appendChild(b);
+}
+
+// ---------- Reveal on scroll ----------
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:0.15});
+reveals.forEach(r=>io.observe(r));
+
+// ---------- Counters ----------
+const counters = document.querySelectorAll('.stat-num');
+let countersDone = false;
+const heroObserver = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting && !countersDone){
+      countersDone = true;
+      counters.forEach(c=>{
+        const target = parseFloat(c.dataset.count);
+        const decimal = c.dataset.decimal;
+        let cur = 0;
+        const step = target/60;
+        const tick = ()=>{
+          cur += step;
+          if(cur >= target){ cur = target; }
+          c.textContent = decimal ? cur.toFixed(1) : Math.floor(cur) + (target>=50?'+':'');
+          if(cur < target) requestAnimationFrame(tick);
+          else c.textContent = (decimal?target.toFixed(1):target) + (target>=50?'+':'');
+        };
+        tick();
+      });
+    }
+  });
+},{threshold:0.3});
+heroObserver.observe(document.querySelector('.stat-card'));
+
+// ---------- Menu data ----------
+const menuItems = [
+  {name:'Café Mocha', cat:'coffee', price:189, img:'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=400&q=80', desc:'Espresso, steamed milk & rich chocolate.'},
+  {name:'Classic Cappuccino', cat:'coffee', price:159, img:'https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=400&q=80', desc:'Velvety foam over double espresso.'},
+  {name:'Cold Brew Black', cat:'coffee', price:169, img:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80', desc:'Slow steeped, smooth & bold.'},
+  {name:'Ferrero Rocher Shake', cat:'shakes', price:229, img:'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&q=80', desc:'Hazelnut, chocolate & a hint of bliss.'},
+  {name:'Oreo Shake', cat:'shakes', price:199, img:'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&q=80', desc:'Creamy, cookie-packed indulgence.'},
+  {name:'Kiwi Mojito', cat:'smoothies', price:179, img:'https://images.unsplash.com/photo-1546171753-97d7676e4602?w=400&q=80', desc:'Tangy kiwi, mint & soda fizz.'},
+  {name:'Fruit Smoothie', cat:'smoothies', price:189, img:'https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=400&q=80', desc:'Seasonal fruits blended fresh daily.'},
+  {name:'Iced Tea', cat:'smoothies', price:139, img:'https://images.unsplash.com/photo-1499638673689-79a0b5115d87?w=400&q=80', desc:'Chilled, citrusy & refreshing.'},
+  {name:'Mexican Panini', cat:'wraps', price:219, img:'https://images.unsplash.com/photo-1539252554935-80c7155cb462?w=400&q=80', desc:'Spiced veggies & cheese, grilled to crisp.'},
+  {name:'Supreme Veggie Wrap', cat:'wraps', price:199, img:'https://images.unsplash.com/photo-1626700051175-6818013e1d4e?w=400&q=80', desc:'Loaded fresh veggies in a soft tortilla.'},
+  {name:'Cottage Cheese Panini', cat:'wraps', price:229, img:'https://images.unsplash.com/photo-1528736235302-52922df5c122?w=400&q=80', desc:'Paneer, herbs & melty cheese.'},
+  {name:'Belgian Chocolate Cake', cat:'desserts', price:159, img:'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400&q=80', desc:'Dense, rich & deeply chocolatey.'},
+];
+
+const menuGrid = document.getElementById('menu-grid');
+const colors = ['#5C3D2E','#C9974C','#2C1810','#8a6650'];
+function renderMenu(cat='all', query=''){
+  menuGrid.innerHTML = '';
+  menuItems
+    .filter(i => (cat==='all'||i.cat===cat) && i.name.toLowerCase().includes(query.toLowerCase()))
+    .forEach((item,idx)=>{
+      const card = document.createElement('div');
+      card.className = 'menu-card reveal in';
+      card.innerHTML = `
+        <img src="${item.img}" class="menu-img" alt="${item.name}">
+        <div style="display:flex; justify-content:space-between; align-items:start;">
+          <div>
+            <h4 style="font-weight:600; font-size:16px;">${item.name}</h4>
+            <p style="font-size:12.5px; color:var(--bark); opacity:.75; margin-top:4px; max-width:170px;">${item.desc}</p>
+          </div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px;">
+          <span class="price-tag">₹${item.price}</span>
+          <button class="add-cart">+</button>
+        </div>`;
+      menuGrid.appendChild(card);
+    });
+  if(!menuGrid.children.length){
+    menuGrid.innerHTML = '<p style="color:var(--bark); opacity:.6; grid-column:1/-1; text-align:center; padding:40px 0;">No items found. Try another search.</p>';
+  }
+}
+renderMenu();
+document.querySelectorAll('.menu-tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    renderMenu(tab.dataset.cat, document.getElementById('menu-search').value);
+  });
+});
+document.getElementById('menu-search').addEventListener('input', e=>{
+  const activeCat = document.querySelector('.menu-tab.active').dataset.cat;
+  renderMenu(activeCat, e.target.value);
+});
+
+// ---------- Countdown to next happy hour (4PM or 6PM) ----------
+function updateCountdown(){
+  const now = new Date();
+  const target = new Date(now);
+  if(now.getHours() < 16) target.setHours(16,0,0,0);
+  else if(now.getHours() < 18) target.setHours(18,0,0,0);
+  else { target.setDate(target.getDate()+1); target.setHours(16,0,0,0); }
+  const diff = target - now;
+  const h = Math.floor(diff/3600000), m = Math.floor((diff%3600000)/60000), s = Math.floor((diff%60000)/1000);
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+setInterval(updateCountdown,1000); updateCountdown();
+
+// ---------- Reviews ----------
+const reviews = [
+  {name:'Aarav Sharma', text:'Best cold brew in Jaipur, hands down. The ambience makes it even better.', rating:5},
+  {name:'Priya Mehta', text:'Their Ferrero Rocher shake is unreal. Coming back every weekend now.', rating:5},
+  {name:'Rohit Verma', text:'Quiet corner to work, fast wifi, and genuinely great coffee.', rating:4},
+  {name:'Sneha Kapoor', text:'Loved the panini and the cozy seating. Perfect Sunday spot.', rating:5},
+  {name:'Kabir Singh', text:'Staff is super friendly. The cappuccino art is always on point.', rating:5},
+  {name:'Ishita Rao', text:'Reasonably priced for the quality. My go-to café in Pratap Nagar.', rating:4},
+];
+const track = document.getElementById('review-track');
+[...reviews, ...reviews].forEach((r,i)=>{
+  const card = document.createElement('div');
+  card.className = 'review-card';
+  card.innerHTML = `
+    <div style="display:flex; gap:12px; align-items:center;">
+      <div class="avatar" style="background:${colors[i%colors.length]}">${r.name[0]}</div>
+      <div><div style="font-weight:600; font-size:14.5px;">${r.name}</div><div style="color:var(--gold); font-size:12px;">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div></div>
+    </div>
+    <p style="margin-top:14px; font-size:14px; color:var(--bark); line-height:1.55;">"${r.text}"</p>`;
+  track.appendChild(card);
+});
+
+// ---------- Gallery ----------
+const galleryImgs = [
+  {src:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&q=80', h:280},
+  {src:'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500&q=80', h:200},
+  {src:'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=500&q=80', h:240},
+  {src:'https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=500&q=80', h:300},
+  {src:'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=500&q=80', h:220},
+  {src:'https://images.unsplash.com/photo-1525610553991-2bede1a236e2?w=500&q=80', h:260},
+  {src:'https://images.unsplash.com/photo-1481833761820-0509d3217039?w=500&q=80', h:200},
+  {src:'https://images.unsplash.com/photo-1498804103079-a6351b050096?w=500&q=80', h:280},
+];
+const masonry = document.getElementById('masonry');
+galleryImgs.forEach(g=>{
+  const div = document.createElement('div');
+  div.className = 'masonry-item';
+  div.style.gridRowEnd = `span ${Math.round(g.h/10)}`;
+  div.innerHTML = `<img src="${g.src}" loading="lazy" alt="cafe gallery">`;
+  div.addEventListener('click', ()=>{
+    document.getElementById('lightbox-img').src = g.src;
+    document.getElementById('lightbox').style.display = 'flex';
+  });
+  masonry.appendChild(div);
+});
+
+// ---------- AI Coffee Quiz ----------
+const quizQuestions = [
+  {q:"How strong do you like your coffee?", options:["Strong & Bold","Light & Smooth"]},
+  {q:"Sweet or Bitter?", options:["Sweet","Bitter"]},
+  {q:"Hot or Cold?", options:["Hot","Cold"]},
+  {q:"Milk or Black?", options:["With Milk","Black, no milk"]},
+];
+let quizIndex = 0, quizAnswers = [];
+function renderQuiz(){
+  const qBox = document.getElementById('quiz-question');
+  const oBox = document.getElementById('quiz-options');
+  if(quizIndex >= quizQuestions.length){
+    qBox.innerHTML = '';
+    oBox.innerHTML = '';
+    let rec = "Café Mocha";
+    if(quizAnswers.includes("Cold")) rec = quizAnswers.includes("Sweet") ? "Ferrero Rocher Shake" : "Cold Brew Black";
+    else if(quizAnswers.includes("Bitter")) rec = "Classic Cappuccino";
+    document.getElementById('quiz-result').style.display = 'block';
+    document.getElementById('quiz-result').innerHTML = `
+      <div style="font-size:13px; opacity:.6; letter-spacing:.1em; text-transform:uppercase;">Recommended For You</div>
+      <h3 style="font-family:'Fraunces',serif; font-size:30px; margin-top:10px; color:var(--gold)">${rec}</h3>
+      <button class="btn-outline" style="margin-top:16px; color:var(--milk); border-color:rgba(237,224,212,.4)" onclick="quizIndex=0; quizAnswers=[]; document.getElementById('quiz-result').style.display='none'; renderQuiz();">Retake Quiz</button>`;
+    return;
+  }
+  const item = quizQuestions[quizIndex];
+  qBox.innerHTML = `<div style="font-size:13px; opacity:.6;">Question ${quizIndex+1} of ${quizQuestions.length}</div><h3 style="font-size:22px; margin-top:6px;">${item.q}</h3>`;
+  oBox.innerHTML = '';
+  item.options.forEach(opt=>{
+    const div = document.createElement('div');
+    div.className = 'quiz-option';
+    div.textContent = opt;
+    div.addEventListener('click', ()=>{
+      quizAnswers.push(opt);
+      quizIndex++;
+      renderQuiz();
+    });
+    oBox.appendChild(div);
+  });
+}
+renderQuiz();
+
+// ---------- Reservation form ----------
+document.getElementById('reserve-form').addEventListener('submit', e=>{
+  e.preventDefault();
+  let valid = true;
+  [...e.target.elements].forEach(el=>{
+    if(el.required && !el.value){ el.classList.add('error'); valid=false; }
+    else el.classList.remove('error');
+  });
+  if(valid){
+    document.getElementById('modal-overlay').style.display = 'flex';
+    e.target.reset();
+  }
+});
+</script>
+</body>
+</html>
